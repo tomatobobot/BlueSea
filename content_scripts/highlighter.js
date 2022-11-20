@@ -236,12 +236,16 @@ const handleHighlighter = (nodes, hasZhNote) => {
       t.classList.add('notranslate');
       markWrap.appendChild(t);
     }
-
+    markWrap.textContent=it.node.textContent;
     it.node.parentNode.replaceChild(markWrap, it.node);
     markWrap.classList.add('bluesea', 'gloab-xmark', 'notranslate');
     markWrap.setAttribute(`data-text`, it.material.text);
     markWrap.setAttribute(`data-marked`, true);
-
+    markWrap.setAttribute('style','color:#e65424')
+    const zh= document.createElement("span");
+    markWrap.appendChild(zh);
+    zh.setAttribute('style',"color:#000");
+    zh.textContent='('+it.material.translation+')';
     let clearTime = null;
     let time2 = null;
     // 处理为悬停超过0.5s然后就显示
